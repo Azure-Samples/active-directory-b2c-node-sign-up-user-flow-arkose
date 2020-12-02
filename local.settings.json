@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "BASIC_AUTH_USERNAME": "<USERNAME>",
+    "BASIC_AUTH_PASSWORD": "<PASSWORD>",
+    "ARKOSE_PRIVATE_KEY": "6Lcve94ZAAAAAJHcpd9xhT4P2ipb81HwFT8mXV8S",
+    "B2C_EXTENSIONS_APP_ID": "8a757fd3a4624a76b4cae2f6388daaaa"
+  }
+}

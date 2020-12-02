@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign in</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- TODO: favicon -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--Replace with your own CSS-->
+    <link
+      href="https://shasacustomjs.blob.core.windows.net/b2c/global.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!--
+        Include the Arkose Labs API in the <head> of your page. In the example below, remember to
+        replace the <ARKOSE_PUBLIC_KEY> with the public key supplied to you by Arkose Labs, and replace the data-callback value if the name of your global function is different than 'setupEnforement'
+        
+        e.g. <script src="//client-api.arkoselabs.com/v2/11111111-1111-1111-1111-111111111111/api.js" data-callback="setupEnforcement" async defer></script>
+      -->
+
+    <script
+      src="https://client-api.arkoselabs.com/v2/<ARKOSE_PUBLIC_KEY>/api.js"
+      data-callback="setupEnforcement"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container unified_container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="image-center">
+                <img
+                  alt="Wingtip Toys"
+                  class="login-logo"
+                  src="https://shasacustomjs.blob.core.windows.net/b2c/logo.png"
+                />
+              </div>
+              <h3 class="text-center">Sign up for a new account</h3>
+              <div id="api" data-name="Unified"></div>
+              <div id="html_element"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+      //id of input element corresponding to the ArkoseSessionToken custom attribute
+      ArkoseSessionTokenEl = "extension_ArkoseSessionToken";
+
+      // Hides captcha custom attribute from view from the user
+      document.getElementById(ArkoseSessionTokenEl).style.display = "none";
+      document.getElementById(
+        ArkoseSessionTokenEl + "_label"
+      ).style.display = "none";
+
+      //callback for setting the value of the input element to contain the token
+      function arkoseCallback(response) {
+        document.getElementById(ArkoseSessionTokenEl).value =
+          response.token;
+      };
+
+      /*
+        This global function will be invoked when the API is ready. Ensure the name is the same name
+        that is defined on the attribute `data-callback` in the script tag that loads the api for your
+        public key.
+      */
+      function setupEnforcement(myEnforcement) {
+        myEnforcement.setConfig({
+          selector: "#html_element",
+          mode:"inline",
+          onCompleted: arkoseCallback,
+        });
+      }
+    </script>
+  </body>
+</html>
