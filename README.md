@@ -66,7 +66,7 @@ The **Assets > selfAsserted.html** file contains an HTML template with JavaScrip
 
 - Load the Arkose Labs script, which renders the Arkose Labs widget and performs client-side Arkose validation.
 - Hide the `extension_ArkoseSessionToken` input element and label, corresponding to the ArkoseSessionToken custom attribute, from the UI shown to the user.
-- When a user completes the Arkose challenge, Arkose Labs verifies the user's response and generates a token. When this happens, the callback `captchaCallback` in the custom JavaScript sets the value of **extension_ArkoseSessionToken** to the generated token value. This value will be submitted to the API endpoint as described in the "Create and deploy your API" section.
+- When a user completes the Arkose challenge, Arkose Labs verifies the user's response and generates a token. When this happens, the callback `arkoseCallback` in the custom JavaScript sets the value of **extension_ArkoseSessionToken** to the generated token value. This value will be submitted to the API endpoint as described in the "Create and deploy your API" section.
 
 Read more about Arkose Labs client-side validation [here](https://arkoselabs.atlassian.net/wiki/spaces/DG/pages/214176229/Standard+Setup).
 
@@ -165,7 +165,7 @@ Your API connector configuration should look like the following:
 
 ### Enable the API connector
 
-In the **API connector** settings for your user flow, select the API connector to be invoked at the **Before creating the user** step. This will invoke the API when a user hits 'Create' in the sign-up flow. The API will do a server-side validation of the `ArkoseSessionToken` value, which was is set when a user completed the captcha challenge during sign-up.
+In the **API connector** settings for your user flow, select the API connector to be invoked at the **Before creating the user** step. This will invoke the API when a user hits 'Create' in the sign-up flow. The API will do a server-side validation of the `ArkoseSessionToken` value, which was is set by the callback of the Arkose widget `arkoseCallback`.
 
 ![API connector selected](ReadmeImages/enable-api-connector.png)
 
