@@ -97,4 +97,3 @@ local.settings.json
 *.DS_Store*
 
 # Visual Studio Code
-.vscode/
