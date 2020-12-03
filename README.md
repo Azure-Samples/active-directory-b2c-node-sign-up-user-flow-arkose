@@ -22,7 +22,7 @@ urlFragment: active-directory-node-b2c-sign-up-user-flow-arkose
 | `.gitignore`                | Define what to ignore at commit time.      |
 | `CONTRIBUTING.md`                   | Guidance on how to contribute to this repository.        |
 | `LICENSE.md`                   | The license for the sample.                |
-| `SECURITY.md`                   | The security notice for the sample.      
+| `SECURITY.md`                   | The security notice for the sample.      |
 
 ## Key Concepts
 
